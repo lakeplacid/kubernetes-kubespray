@@ -1,9 +1,4 @@
 ---
-- name: nginx-proxy | Write static pod
-  template:
-    src: manifests/nginx-proxy.manifest.j2
-    dest: "{{kube_manifest_dir}}/nginx-proxy.yml"
-
 - name: nginx-proxy | Make nginx directory
   file:
     path: /etc/nginx
@@ -18,3 +13,8 @@
     owner: root
     mode: 0755
     backup: yes
+
+- name: nginx-proxy | Write static pod
+  template:
+    src: manifests/nginx-proxy.manifest.j2
+    dest: "{{kube_manifest_dir}}/nginx-proxy.yml"
